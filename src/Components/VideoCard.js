@@ -22,13 +22,13 @@ const VideoCard = ({ card }) => {
   const { thumbnails } = snippet;
   // console.log(thumbnails);
   return (
-    <div className='p-2 m-2 w-[25%]'>
+    <div className='p-2 m-2 w-72'>
       <img
         className='py-2 rounded-xl'
         src={thumbnails?.medium?.url}
         alt='videoImage'
       />
-      <h1 className='font-semibold '>{snippet?.title}</h1>
+      <h1 className='font-semibold'>{snippet?.title}</h1>
       <h1 className='text-gray-500'>{snippet?.channelTitle}</h1>
       <h1>{formatCountViews(statistics.viewCount)}</h1>
     </div>

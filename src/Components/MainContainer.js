@@ -17,7 +17,7 @@ const MainContainer = () => {
   ];
   return (
     <div>
-      <div className='flex justify-center'>
+      <div className='flex'>
         {btnArray.map((buttonValue, index) => {
           return <ButtonList key={index} buttonValue={buttonValue} />;
         })}

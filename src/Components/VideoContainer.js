@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import VideoCard from './VideoCard';
+import { Link } from 'react-router-dom';
 
 const VideoContainer = () => {
   const [videos, setVideos] = useState([]);
@@ -18,7 +19,11 @@ const VideoContainer = () => {
   return (
     <div className='flex flex-wrap justify-around'>
       {videos.map((video) => {
-        return <VideoCard card={video} />;
+        return (
+          <Link to={'/watch?v=' + video.id}>
+            <VideoCard key={video.id} card={video} />
+          </Link>
+        );
       })}
     </div>
   );
