@@ -1,18 +1,25 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import VideoCard from './VideoCard';
 
 const VideoContainer = () => {
+  const [videos, setVideos] = useState([]);
+
+  const getData = async () => {
+    const baseurl =
+      'https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=40&regionCode=US&key=';
+    const data = await fetch(`${baseurl}${process.env.REACT_APP_YOUTUBE_KEY}`);
+    const json = await data?.json();
+    setVideos(json?.items);
+  };
   useEffect(() => {
-    const data = fetch(
-      'https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&regionCode=US&key=' +
-        process.env.REACT_APP_NEWS_API
-    );
-    const json = data.json;
-    console.log(json);
+    getData();
   }, []);
+
   return (
-    <div>
-      VideoContainer
-      {process.env.REACT_APP_NEWS_API}
+    <div className='flex flex-wrap justify-around'>
+      {videos.map((video) => {
+        return <VideoCard card={video} />;
+      })}
     </div>
   );
 };

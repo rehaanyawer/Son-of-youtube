@@ -7,7 +7,7 @@ import store from './Components/utils/store';
 function App() {
   return (
     <Provider store={store}>
-      <div>
+      <div className=''>
         <Head />
         <Body />
       </div>

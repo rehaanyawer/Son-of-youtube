@@ -8,7 +8,7 @@ const Head = () => {
     dispatch(toggleMenu());
   };
   return (
-    <div className='grid grid-flow-col p-1 m-1 shadow-xl items-center'>
+    <div className='grid grid-flow-col p-1 m-1 shadow-xl bg-white w-full items-center sticky z-50 top-0'>
       <div className='flex col-span-1 items-center'>
         <img
           onClick={() => toggleMenuHandler()}
