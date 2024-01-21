@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { closeMenu } from './utils/appSlice';
 import { useSearchParams } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
+import CommentsContainer from './CommentsContainer';
 
 const WatchPage = () => {
   const location = useLocation();
@@ -27,7 +28,8 @@ const WatchPage = () => {
           title='YouTube video player'
           allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
         ></iframe>
-        <h1>this is the video</h1>
+        <h2 className='text-xl font-bold px-1 m-1'>{video.snippet.title}</h2>
+        <CommentsContainer />
       </div>
       <div>this is the video</div>
     </div>
