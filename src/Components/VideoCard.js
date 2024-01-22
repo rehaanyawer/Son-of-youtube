@@ -1,6 +1,8 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const VideoCard = ({ card }) => {
+  const navigate = useNavigate();
   const formatCountViews = (number) => {
     if (isNaN(number) || number < 0) {
       return 'Invalid input';
@@ -21,8 +23,16 @@ const VideoCard = ({ card }) => {
   // console.log(snippet);
   const { thumbnails } = snippet;
   // console.log(thumbnails);
+
+  const handleNavigation = (video) => {
+    console.log(video);
+    navigate('/watch?v=' + video.id, { state: { video } });
+  };
   return (
-    <div className='p-2 m-2 w-72'>
+    <div
+      className='p-2 m-2 w-72 cursor-pointer'
+      onClick={() => handleNavigation(card)}
+    >
       <img
         className='py-2 rounded-xl'
         src={thumbnails?.medium?.url}
