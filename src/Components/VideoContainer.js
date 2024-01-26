@@ -17,14 +17,15 @@ const VideoContainer = () => {
 
   return (
     <div className='flex flex-wrap justify-around'>
-      {videos.map((video) => {
-        return (
-          //<Link to={'/watch?v=' + video.id}>
+      {videos.length > 1 &&
+        videos.map((video) => {
+          return (
+            //<Link to={'/watch?v=' + video.id}>
 
-          <VideoCard key={video.id} card={video} />
-          //</Link>
-        );
-      })}
+            <VideoCard key={video.id} card={video} />
+            //</Link>
+          );
+        })}
     </div>
   );
 };
