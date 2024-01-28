@@ -4,11 +4,11 @@ import { closeMenu } from './utils/appSlice';
 import { useSearchParams } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import CommentsContainer from './CommentsContainer';
+import LiveChat from './LiveChat';
 
 const WatchPage = () => {
   const location = useLocation();
   const { video } = location.state || {};
-  console.log(video);
   const [searchParams] = useSearchParams();
 
   const dispatch = useDispatch();
@@ -18,20 +18,24 @@ const WatchPage = () => {
   }, []);
 
   return (
-    <div className='flex'>
-      <div className='px-16 p-8'>
-        <iframe
-          className='rounded-xl'
-          width='900'
-          height='500'
-          src={'https://www.youtube.com/embed/' + searchParams.get('v')}
-          title='YouTube video player'
-          allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
-        ></iframe>
-        <h2 className='text-xl font-bold px-1 m-1'>{video.snippet.title}</h2>
-        <CommentsContainer />
+    <div className='w-full'>
+      <div className='px-5 flex'>
+        <div>
+          <iframe
+            className='rounded-xl'
+            width='900'
+            height='500'
+            src={'https://www.youtube.com/embed/' + searchParams.get('v')}
+            title='YouTube video player'
+            allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+          ></iframe>
+        </div>
+        <div className='w-full'>
+          <LiveChat />
+        </div>
       </div>
-      <div>this is the video</div>
+      <h2 className='text-xl font-bold px-1 m-1'>{video.snippet.title}</h2>
+      <CommentsContainer />
     </div>
   );
 };
